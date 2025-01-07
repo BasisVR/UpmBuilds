@@ -1,0 +1,7 @@
+{
+  "name": "org.basisvr.simplebase",
+  "version": "4.0.2",
+  "displayName": "SimpleBase",
+  "description": "Base16, Base32, Base58, Base85 encoding/decoding library",
+  "documentationUrl": "https://github.com/ssg/SimpleBase"
+}

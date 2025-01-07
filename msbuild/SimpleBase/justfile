@@ -1,0 +1,25 @@
+git_repo := "https://github.com/ssg/SimpleBase.git"
+git_ref := "4.0.2"
+dll_name := "SimpleBase.dll"
+out_dir := invocation_directory()
+
+working_dir := `mktemp -d`
+repo_dir := working_dir / "repo"
+dotnet_artifact_dir := working_dir / "dotnet_artifacts"
+
+default:
+    just --list
+
+# Clean build outputs
+clean:
+    dotnet clean {{repo_dir}} || true
+    rm -rf {{repo_dir}}/**/bin {{repo_dir}}/**/obj
+
+clone:
+    git clone --single-branch --branch {{git_ref}} {{git_repo}} {{repo_dir}}
+
+restore:
+    dotnet restore {{repo_dir}} --artifacts-path {{dotnet_artifact_dir}}
+
+build: restore
+    dotnet build --configuration Release {{repo_dir}} -o {{dotnet_artifact_dir}}
