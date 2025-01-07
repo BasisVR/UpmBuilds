@@ -1,0 +1,14 @@
+name: C#
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  build_upm:
+    name: Build Unity Packages
+    runs-on: ubuntu-24.11
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        runs: |
+          just build
