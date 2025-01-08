@@ -21,7 +21,7 @@ clean:
 clone:
     git clone --single-branch --branch {{git_ref}} {{git_repo}} {{repo_dir}}
 
-build:
+build: clone
     dotnet build {{csproj_path}} --configuration Release -o {{dotnet_artifact_dir}} --framework {{dotnet_framework}}
 
 assemble_upm: clone build && clean
@@ -29,4 +29,4 @@ assemble_upm: clone build && clean
     cp {{dotnet_artifact_dir / dll_name}} {{upm_contents_dir}}
     cp package.json {{upm_contents_dir}}
     mkdir -p {{out_dir}}
-    tar -cvf {{out_dir / lib_name}}.tgz -C {{upm_contents_dir}} .
+    npm pack --pack-destination {{out_dir}} {{upm_contents_dir}}

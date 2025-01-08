@@ -14,6 +14,7 @@ in
       dotnet
       just
       nixpkgs-fmt
+      nodejs_23
       roslyn-ls
     ]) ++ pkgs.lib.optional pkgs.stdenv.isDarwin [
       pkgs.libiconv
