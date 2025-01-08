@@ -1,10 +1,10 @@
-git_repo := "https://github.com/ssg/SimpleBase.git"
-git_ref := "4.0.2"
-dll_name := "SimpleBase.dll"
-lib_name := "SimpleBase"
-dotnet_framework := "netstandard2.1"
-csproj_relative_path := "src" / "SimpleBase.csproj"
+git_repo := "https://github.com/Wojmik/Base128.git"
+git_ref := "Version_1.2.2"
+dll_name := "Base128.dll"
+lib_name := "Base128"
 out_dir := invocation_directory() / "build"
+dotnet_framework := "netstandard2.1"
+csproj_relative_path := "Base128" / "Base128.csproj"
 
 working_dir := `mktemp -d`
 repo_dir := working_dir / "repo"

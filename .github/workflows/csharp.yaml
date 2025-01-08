@@ -18,5 +18,6 @@ jobs:
           name: csharp_artifacts
           if-no-files-found: error
           retention-days: 1
+          compression-level: 0
           path: |
-            build
+            build/

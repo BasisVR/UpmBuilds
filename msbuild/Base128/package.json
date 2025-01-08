@@ -1,0 +1,7 @@
+{
+  "name": "org.basisvr.base128",
+  "version": "1.2.2",
+  "displayName": "Base128",
+  "description": "binary serializing and deserializing integer types as variable length integers.",
+  "documentationUrl": "https://github.com/Wojmik/Base128"
+}
