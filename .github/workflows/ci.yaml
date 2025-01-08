@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   check-inputs:
-    runs-on: ubuntu-24.11
+    runs-on: ubuntu-24.04
     outputs:
       is-default-branch: ${{ steps.set-is-default-branch.outputs.CI_IS_DEFAULT_BRANCH }}
 

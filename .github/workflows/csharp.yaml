@@ -6,9 +6,17 @@ on:
 jobs:
   build_upm:
     name: Build Unity Packages
-    runs-on: ubuntu-24.11
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Build
-        runs: |
-          just build
+      - uses: cachix/install-nix-action@v30
+      - name: Build UPM packages
+        run: nix develop -c just
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: csharp_artifacts
+          if-no-files-found: error
+          retention-days: 1
+          path: |
+            build

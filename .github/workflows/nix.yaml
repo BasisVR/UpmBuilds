@@ -3,7 +3,7 @@ on:
   workflow_call:
     secrets:
       CACHIX_AUTH_TOKEN:
-        required: true
+        required: false
 
 jobs:
   fmt:
