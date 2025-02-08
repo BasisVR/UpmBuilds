@@ -1,5 +1,13 @@
-default: all
+default:
+	just --list
 
-all:
+all: base128 simplebase bouncycastle
+
+base128:
 	just msbuild/Base128/
+
+bouncycastle:
+	just msbuild/BouncyCastle/
+
+simplebase:
 	just msbuild/SimpleBase/
