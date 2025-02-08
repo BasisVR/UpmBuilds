@@ -1,8 +1,8 @@
-git_repo := "https://github.com/Wojmik/Base128.git"
-git_ref := "Version_1.2.2"
-dll_name := "Base128.dll"
-dotnet_framework := "netstandard2.1"
-csproj_relative_path := "Base128" / "Base128.csproj"
+git_repo := "https://github.com/bcgit/bc-csharp.git"
+git_ref := "release-2.5.0"
+dll_name := "BouncyCastle.Cryptography.dll"
+dotnet_framework := "netstandard2.0"
+csproj_relative_path := "crypto" / "src" / "BouncyCastle.Crypto.csproj"
 out_dir := invocation_directory() / "build"
 
 working_dir := `mktemp -d`
