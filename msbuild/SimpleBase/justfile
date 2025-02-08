@@ -28,5 +28,6 @@ assemble_upm: clone build && clean
     mkdir -p {{upm_contents_dir}}
     cp {{dotnet_artifact_dir / dll_name}} {{upm_contents_dir}}
     cp package.json {{upm_contents_dir}}
+    cp *.meta {{upm_contents_dir}}
     mkdir -p {{out_dir}}
     npm pack --pack-destination {{out_dir}} {{upm_contents_dir}}
