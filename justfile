@@ -11,3 +11,6 @@ bouncycastle:
 
 simplebase:
 	just msbuild/SimpleBase/
+
+msidenttokens:
+	just msbuild/Microsoft.IdentityModel.Tokens/

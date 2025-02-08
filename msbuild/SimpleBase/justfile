@@ -9,7 +9,6 @@ working_dir := `mktemp -d`
 repo_dir := working_dir / "repo"
 dotnet_artifact_dir := working_dir / "dotnet_artifacts"
 upm_contents_dir := working_dir / "upm_contents"
-csproj_path := repo_dir / csproj_relative_path
 
 default: assemble_upm
 
@@ -21,7 +20,8 @@ clone:
     git clone --single-branch --branch {{git_ref}} {{git_repo}} {{repo_dir}}
 
 build: clone
-    dotnet build {{csproj_path}} --configuration Release -o {{dotnet_artifact_dir}} --framework {{dotnet_framework}}
+    rm -f {{repo_dir / "global.json"}}
+    cd {{repo_dir}} && dotnet build {{csproj_relative_path}} --configuration Release -o {{dotnet_artifact_dir}} --framework {{dotnet_framework}}
 
 assemble_upm: clone build && clean
     mkdir -p {{upm_contents_dir}}

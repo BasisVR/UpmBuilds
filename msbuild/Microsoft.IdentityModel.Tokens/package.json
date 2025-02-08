@@ -1,0 +1,9 @@
+{
+  "name": "org.basisvr.microsoft.identitymodel.tokens",
+  "version": "8.4.0",
+  "displayName": "Microsoft.IdentityModel.Tokens",
+  "description": "Includes types that provide support for SecurityTokens, Cryptographic operations: Signing, Verifying Signatures, Encryption.",
+  "documentationUrl": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/@BasisVR" },
+  "repository":"https://github.com/BasisVR/UpmBuilds"
+}

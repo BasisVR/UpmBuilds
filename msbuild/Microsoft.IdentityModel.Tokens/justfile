@@ -1,8 +1,8 @@
-git_repo := "https://github.com/Wojmik/Base128.git"
-git_ref := "Version_1.2.2"
-dll_name := "Base128.dll"
-dotnet_framework := "netstandard2.1"
-csproj_relative_path := "Base128" / "Base128.csproj"
+git_repo := "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet"
+git_ref := "8.4.0"
+dll_name := "Microsoft.IdentityModel.Tokens.dll"
+dotnet_framework := "netstandard2.0"
+csproj_relative_path := "src" / "Microsoft.IdentityModel.Tokens" / "Microsoft.IdentityModel.Tokens.csproj"
 out_dir := invocation_directory() / "build"
 
 working_dir := `mktemp -d`
@@ -23,10 +23,10 @@ build: clone
     rm -f {{repo_dir / "global.json"}}
     cd {{repo_dir}} && dotnet build {{csproj_relative_path}} --configuration Release -o {{dotnet_artifact_dir}} --framework {{dotnet_framework}}
 
-assemble_upm: clone build && clean
+assemble_upm: clone build 
     mkdir -p {{upm_contents_dir}}
     cp {{dotnet_artifact_dir / dll_name}} {{upm_contents_dir}}
     cp package.json {{upm_contents_dir}}
-    cp *.meta {{upm_contents_dir}}
+    # cp *.meta {{upm_contents_dir}}
     mkdir -p {{out_dir}}
     npm pack --pack-destination {{out_dir}} {{upm_contents_dir}}
