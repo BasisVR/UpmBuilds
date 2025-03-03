@@ -9,6 +9,9 @@ base128:
 bouncycastle:
 	just msbuild/BouncyCastle/
 
+generatorequals:
+	just msbuild/Generator.Equals/
+
 newtonsoftjson:
 	just msbuild/Newtonsoft.Json/
 

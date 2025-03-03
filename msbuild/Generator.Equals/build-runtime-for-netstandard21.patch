@@ -1,0 +1,22 @@
+diff --git a/Generator.Equals.Runtime/Generator.Equals.Runtime.csproj b/Generator.Equals.Runtime/Generator.Equals.Runtime.csproj
+index b2b1595..d161784 100644
+--- a/Generator.Equals.Runtime/Generator.Equals.Runtime.csproj
++++ b/Generator.Equals.Runtime/Generator.Equals.Runtime.csproj
+@@ -1,14 +1,15 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+ 
+     <PropertyGroup>
+-        <TargetFramework>netstandard2.0</TargetFramework>
++        <TargetFramework>netstandard2.1</TargetFramework>
+         <LangVersion>9.0</LangVersion>
+         <Nullable>enable</Nullable>
+         <RootNamespace>Generator.Equals</RootNamespace>
+     </PropertyGroup>
+ 
+     <ItemGroup>
+-      <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
++      <!--Not needed on 2.1-->
++      <!--<PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />-->
+     </ItemGroup>
+ 
+ </Project>
