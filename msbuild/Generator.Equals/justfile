@@ -1,0 +1,35 @@
+git_repo := "https://github.com/diegofrata/Generator.Equals.git"
+git_ref := "3.2.0"
+
+out_dir := invocation_directory() / "build"
+working_dir := `mktemp -d`
+repo_dir := working_dir / "repo"
+dotnet_artifact_dir := working_dir / "dotnet_artifacts"
+upm_contents_dir := working_dir / "upm_contents"
+
+default: assemble_upm
+
+# Clean build outputs
+clean:
+    rm -rf {{working_dir}}
+
+clone:
+    git clone --single-branch --branch {{git_ref}} {{git_repo}} {{repo_dir}}
+
+build_both: clone
+    cd {{repo_dir}} && dotnet build {{"Generator.Equals" / "Generator.Equals.csproj"}} --configuration Release -o {{dotnet_artifact_dir}} --framework netstandard2.0
+
+patch_runtime_for_netstandard21: clone
+    cd {{repo_dir}} && git apply {{justfile_dir() / "build-runtime-for-netstandard21.patch"}}
+
+build_only_runtime: clone build_both patch_runtime_for_netstandard21
+    cd {{repo_dir}} && dotnet build {{"Generator.Equals.Runtime" / "Generator.Equals.Runtime.csproj"}} --configuration Release -o {{dotnet_artifact_dir}} --framework netstandard2.1
+
+assemble_upm: clone build_both build_only_runtime && clean
+    mkdir -p {{upm_contents_dir}}
+    cp {{dotnet_artifact_dir / "Generator.Equals.dll"}} {{upm_contents_dir}}
+    cp {{dotnet_artifact_dir / "Generator.Equals.Runtime.dll"}} {{upm_contents_dir}}
+    cp package.json {{upm_contents_dir}}
+    cp *.meta {{upm_contents_dir}}
+    mkdir -p {{out_dir}}
+    npm pack --pack-destination {{out_dir}} {{upm_contents_dir}}
