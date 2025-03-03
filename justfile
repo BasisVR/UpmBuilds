@@ -1,7 +1,7 @@
 default:
 	just --list
 
-all: base128 bouncycastle newtonsoftjson simplebase
+all: base128 bouncycastle generatorequals newtonsoftjson simplebase
 
 base128:
 	just msbuild/Base128/
